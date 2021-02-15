@@ -11,4 +11,5 @@ public class InternshipDTO implements Serializable {
 
     private Long id;
     private String name;
+
 }

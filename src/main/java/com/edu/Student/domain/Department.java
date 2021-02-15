@@ -19,6 +19,7 @@ public class Department implements Serializable {
     @Column(name = "LOCATION", length = 100, nullable = false)
     private String location;
 
+
     public Long getId() {
         return id;
     }

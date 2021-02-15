@@ -21,6 +21,7 @@ public class Internship implements Serializable {
     @Column(name = "NAME",nullable = false)
     private String name;
 
+
     public Long getId() {
         return id;
     }

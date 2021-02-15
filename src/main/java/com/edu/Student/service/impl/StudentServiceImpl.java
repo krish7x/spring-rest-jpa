@@ -25,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
         Student student;
         if(studentDTO.getId() != null) {
             student = studentRepository.getOne(studentDTO.getId());
-        }else {
+        } else {
             student = new Student();
         }
         if(studentDTO.getName() != null) {

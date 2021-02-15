@@ -24,7 +24,6 @@ public class InternshipServiceImpl implements InternshipService {
             internship = new Internship();
             internship.setId(internshipDTO.getId());
             internship.setName(internshipDTO.getName());
-           ;
         } else {
             internship = internshipRepository.getOne(internshipDTO.getId());
             if(internshipDTO.getName() != null){
