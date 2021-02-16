@@ -1,6 +1,7 @@
 package com.edu.Student.web;
 
 import com.edu.Student.dto.InternshipDTO;
+import com.edu.Student.dto.InternshipIdentityDTO;
 import com.edu.Student.service.InternshipService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,8 @@ public class InternshipRestController {
     }
 
     @PostMapping("/add")
-    public @ResponseBody void add(@RequestBody InternshipDTO internshipDTO){
-        internshipService.createAndUpdate(internshipDTO);
+    public @ResponseBody
+    InternshipIdentityDTO add(@RequestBody InternshipDTO internshipDTO){
+       return internshipService.createAndUpdate(internshipDTO);
     }
 }

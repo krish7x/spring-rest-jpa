@@ -10,15 +10,14 @@ public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "ID")
     private Long id;
 
     @Column(name = "NAME", length = 100, nullable = false)
     private String name;
 
-    @Column(name = "DEPT", length = 50, nullable = false)
-    private String dept;
-
+    @ManyToOne
+    @JoinColumn(name = "DEPARTMENT_ID",nullable = false)
+    private Department department;
 
     public Long getId() {
         return id;
@@ -36,12 +35,11 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
-
 }

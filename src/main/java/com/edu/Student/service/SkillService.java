@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface SkillService {
 
-    void createAndUpdate(SkillDTO dto);
-    void delete(Long id);
+    SkillDTO createAndUpdate(SkillDTO dto);
+    String delete(Long id);
     SkillDTO get(Long id);
     List<SkillDTO> getAll();
 }

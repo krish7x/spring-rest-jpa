@@ -21,6 +21,9 @@ public class Internship implements Serializable {
     @Column(name = "NAME",nullable = false)
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "DEPT_ID", nullable = false)
+    private Department department;
 
     public Long getId() {
         return id;
@@ -36,5 +39,11 @@ public class Internship implements Serializable {
         this.name = name;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

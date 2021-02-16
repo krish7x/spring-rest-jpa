@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface DepartmentService {
 
-    void createAndUpdate(DepartmentDTO dto);
-    void delete(Long id);
+    DepartmentDTO createAndUpdate(DepartmentDTO dto);
+    String delete(Long id);
     DepartmentDTO get(Long id);
     List<DepartmentDTO> getAll();
 }

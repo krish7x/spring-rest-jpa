@@ -1,9 +1,9 @@
 spring:
   jpa:
-    hibernate.ddl-auto:update
-    database-platform:org.hibernate.dialect.MySQL57Dialect
-    generate-ddl:true
-    show:true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    generate-ddl: true
+    show: true
   datasource:
     url:  jdbc:mysql://${MYSQL_HOST:localhost}:3306/student
     username:  root

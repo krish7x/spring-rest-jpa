@@ -1,7 +1,7 @@
 package com.edu.Student.web;
 
 import com.edu.Student.dto.DepartmentDTO;
-import com.edu.Student.dto.LongIdentityDTO;
+import com.edu.Student.dto.IdentityDTO;
 import com.edu.Student.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -17,8 +17,8 @@ public class DepartmentRestController {
     }
 
     @PostMapping("/add")
-    public @ResponseBody void add(@RequestBody DepartmentDTO departmentDTO) {
-        departmentService.createAndUpdate(departmentDTO);
+    public @ResponseBody DepartmentDTO add(@RequestBody DepartmentDTO departmentDTO) {
+       return departmentService.createAndUpdate(departmentDTO);
     }
 
     @PostMapping("/update")
@@ -27,13 +27,13 @@ public class DepartmentRestController {
     }
 
     @PostMapping("/delete")
-    public @ResponseBody void delete(@RequestBody LongIdentityDTO longIdentityDTO){
-        departmentService.delete(longIdentityDTO.getId());
+    public @ResponseBody String delete(@RequestBody IdentityDTO identityDTO){
+        return departmentService.delete(identityDTO.getId());
     }
 
     @PostMapping("/get")
-    public @ResponseBody DepartmentDTO get(@RequestBody  LongIdentityDTO longIdentityDTO){
-      return  departmentService.get(longIdentityDTO.getId());
+    public @ResponseBody DepartmentDTO get(@RequestBody IdentityDTO identityDTO){
+      return  departmentService.get(identityDTO.getId());
     }
 
     @PostMapping("/get-all")

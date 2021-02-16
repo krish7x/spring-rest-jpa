@@ -20,50 +20,76 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public void createAndUpdate(SkillDTO skillDTO) {
+    public SkillDTO createAndUpdate(SkillDTO skillDTO) {
         Skill skill;
-        if(skillDTO.getId() != null) {
-            skill = skillRepository.getOne(skillDTO.getId());
-        } else {
+        //create
+        if(skillDTO.getId() == null) {
             skill = new Skill();
-        }
-        if(skillDTO.getName() != null ) {
             skill.setName(skillDTO.getName());
-        }
-        if(skillDTO.getLevel() != null ) {
             skill.setLevel(skillDTO.getLevel());
         }
+        //update
+        else {
+            skill = skillRepository.getOne(skillDTO.getId());
+            if(skillDTO.getName() != null ) {
+                skill.setName(skillDTO.getName());
+            }
+            if(skillDTO.getLevel() != null ) {
+                skill.setLevel(skillDTO.getLevel());
+            }
+        }
+        //save
         skillRepository.save(skill);
+        //set up id
+        skillDTO.setId(skill.getId());
+        //response
+        return skillDTO;
     }
 
     @Override
-    public void delete(Long id) {
-        skillRepository.deleteById(id);
+    public String delete(Long id) {
+        //check if record exists
+        if(skillRepository.findById(id).isPresent()){
+            skillRepository.deleteById(id);
+            //success response
+            return "Deleted Successfully!";
+        }
+        //failure response
+        return "Deletion Unsuccessful!";
     }
 
     @Override
     public SkillDTO get(Long id) {
+        //get entity values from repository
         Skill skill = skillRepository.getOne(id);
+        //instance of DTO
         SkillDTO skillDTO = new SkillDTO();
+        //set up DTO
         skillDTO.setId(skill.getId());
         skillDTO.setName(skill.getName());
         skillDTO.setLevel(skill.getLevel());
+        //response
         return skillDTO;
     }
 
     @Override
     public List<SkillDTO> getAll() {
+        //To print all the DTOs in a list
         List<SkillDTO> skillDTOS = new ArrayList<>();
+        //get all the entity values of repository in a list
         List<Skill> skills = skillRepository.findAll();
-
+        //loop through entity
         for(Skill skill: skills){
+            //instance of DTO
             SkillDTO skillDTO = new SkillDTO();
+            //set up DTO
             skillDTO.setId(skill.getId());
             skillDTO.setName(skill.getName());
             skillDTO.setLevel(skill.getLevel());
+            //add one DTO in a list of DTOs
             skillDTOS.add(skillDTO);
         }
+        //response
         return skillDTOS;
     }
-
 }

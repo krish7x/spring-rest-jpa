@@ -9,5 +9,5 @@ public class StudentDTO implements Serializable {
 
     private Long id;
     private String name;
-    private String dept;
+    private IdentityDTO department;
 }

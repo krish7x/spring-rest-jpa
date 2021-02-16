@@ -1,6 +1,6 @@
 package com.edu.Student.web;
 
-import com.edu.Student.dto.LongIdentityDTO;
+import com.edu.Student.dto.IdentityDTO;
 import com.edu.Student.dto.SkillDTO;
 import com.edu.Student.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ public class SkillRestController {
 
     @PostMapping("/add")
     public @ResponseBody
-    void add(@RequestBody SkillDTO skillDTO) {
-        skillService.createAndUpdate(skillDTO);
+    SkillDTO add(@RequestBody SkillDTO skillDTO) {
+        return skillService.createAndUpdate(skillDTO);
     }
 
     @PostMapping("/update")
@@ -32,14 +32,14 @@ public class SkillRestController {
 
     @PostMapping("/delete")
     public @ResponseBody
-    void delete(@RequestBody LongIdentityDTO longIdentityDTO) {
-        skillService.delete(longIdentityDTO.getId());
+    String delete(@RequestBody IdentityDTO identityDTO) {
+        return skillService.delete(identityDTO.getId());
     }
 
     @PostMapping("/get")
     public @ResponseBody
-    SkillDTO get(@RequestBody LongIdentityDTO longIdentityDTO) {
-        return skillService.get(longIdentityDTO.getId());
+    SkillDTO get(@RequestBody IdentityDTO identityDTO) {
+        return skillService.get(identityDTO.getId());
     }
 
     @PostMapping("/get-all")
